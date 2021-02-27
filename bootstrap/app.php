@@ -48,6 +48,13 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+// Laravel Firebase
+$app->register(Kreait\Laravel\Firebase\ServiceProvider::class);
+
+// If you want to use the Facades provided by the package
+$app->withFacades();
+
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Register Config Files

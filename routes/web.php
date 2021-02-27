@@ -16,3 +16,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+// Groups
+$router->get('groups', 'GroupController@index');
+$router->get('groups/create', 'GroupController@create');
