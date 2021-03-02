@@ -15,8 +15,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        return Firebase::Database()
-            ->getReference('groups')->getValue();
+        return array_values(Firebase::Database()
+            ->getReference('groups')->getValue());
     }
 
     /**
@@ -24,13 +24,14 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        ray($request->all());
         Firebase::Database()
             ->getReference('groups')
             ->push([
-                'name' => 'Sexy Zone',
-                'url' => 'sexyzone.jpg'
+                'name' => $request->name,
+                'url' => $request->url
             ]);
     }
 

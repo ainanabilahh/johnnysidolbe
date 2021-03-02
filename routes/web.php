@@ -19,4 +19,4 @@ $router->get('/', function () use ($router) {
 
 // Groups
 $router->get('groups', 'GroupController@index');
-$router->get('groups/create', 'GroupController@create');
+$router->post('groups/create', 'GroupController@create');
