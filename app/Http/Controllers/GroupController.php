@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use Kreait\Laravel\Firebase\Facades\Firebase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class GroupController extends Controller
 {
@@ -26,13 +27,15 @@ class GroupController extends Controller
      */
     public function create(Request $request)
     {
-        ray($request->all());
-        Firebase::Database()
+        foreach ($request->all() as $i => $group) {
+        // ray(json_decode($group));
+            Firebase::Database()
             ->getReference('groups')
             ->push([
-                'name' => $request->name,
-                'url' => $request->url
+                'name' => $group['name'],
+                'url' => $group['url']
             ]);
+        }
     }
 
     /**
