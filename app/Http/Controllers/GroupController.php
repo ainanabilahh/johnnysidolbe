@@ -27,7 +27,7 @@ class GroupController extends Controller
      */
     public function create(Request $request)
     {
-        Log::info($request->all());
+        // Log::info($request->all());
         // ray(json_decode($group));
         Firebase::Database()
             ->getReference('groups')
