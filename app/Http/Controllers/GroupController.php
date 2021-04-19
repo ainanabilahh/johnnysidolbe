@@ -27,15 +27,24 @@ class GroupController extends Controller
      */
     public function create(Request $request)
     {
-        foreach ($request->all() as $i => $group) {
+        Log::info($request->all());
         // ray(json_decode($group));
-            Firebase::Database()
+        Firebase::Database()
             ->getReference('groups')
             ->push([
-                'name' => $group['name'],
-                'url' => $group['url']
+                'name' => $request->name,
+                'url' => $request->url
             ]);
-        }
+
+        // foreach ($request->all() as $i => $group) {
+        // // ray(json_decode($group));
+        //     Firebase::Database()
+        //     ->getReference('groups')
+        //     ->push([
+        //         'name' => $group['name'],
+        //         'url' => $group['url']
+        //     ]);
+        // }
     }
 
     /**
